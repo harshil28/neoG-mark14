@@ -15,29 +15,25 @@ var quantity = qt.value;
 var currentPrice = cp.value;
 
 
-  if (currentPrice > initialPrice) {
-    console.log(currentPrice);
-    console.log(initialPrice);
+  if (initialPrice < currentPrice) {
+    // console.log(currentPrice);
+    // console.log(initialPrice);
     var profit =
-      currentPrice * quantity - initialPrice * quantity;
-    var profitPercentage = ((profit / initialPrice) * 100).toFixed(2);
-    showMessage("Your Profit is " + profit + " & Profit Percentage is " + profitPercentage);
-  }
-  
-  if (currentPrice < initialPrice) {
-    console.log(currentPrice<initialPrice);
-    console.log(currentPrice);
-    console.log(initialPrice);
-    console.log("also working");
+      (currentPrice - initialPrice) * quantity;
+    var profitPercentage = (((currentPrice - initialPrice) / initialPrice) * 100).toFixed(2);
+    showMessage("Your Profit is " + profit + " & Profit Percentage is " + profitPercentage + " %");
+  }else if (initialPrice > currentPrice) {
+    // console.log(currentPrice<initialPrice);
+    // console.log(currentPrice);
+    // console.log(initialPrice);
+    // console.log("also working");
     var loss =
-      initialPrice * quantity - currentPrice * quantity;
-    var lossPercentage = ((loss / initialPrice) * 100).toFixed(2);
-    showMessage("Your loss is " + loss + " & loss Percentage is " + lossPercentage);
-  }
-  else {
-    showMessage("No Pain,No Gain");
+      (initialPrice - currentPrice) * quantity;
+    var lossPercentage = (((initialPrice - currentPrice) / initialPrice) * 100).toFixed(2);
+    showMessage("Your Loss is " + loss + " & Loss Percentage is " + lossPercentage + " %");
+  }else if (currentPrice == initialPrice){
+    showMessage("No Pain,No Gain!!");
   }
 }
-
 
 showButton.addEventListener('click',calculateProfitAndLoss);
